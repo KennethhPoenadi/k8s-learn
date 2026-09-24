@@ -4,7 +4,7 @@ metadata:
   name: app
   namespace: sikp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: sikp-app
