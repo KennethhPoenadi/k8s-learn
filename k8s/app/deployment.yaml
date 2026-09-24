@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: sikp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sikp-app
+  template:
+    metadata:
+      labels:
+        app: sikp-app
+    spec:
+      containers:
+        - name: app
+          image: sikp-backend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 18080
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secret
